@@ -35,3 +35,4 @@ def print_parameter_query(fields:str, where:str, parameter):
     print(tabulate(results,fields.split(",")))
     db.close()  
 
+print_query('alco_locos')
