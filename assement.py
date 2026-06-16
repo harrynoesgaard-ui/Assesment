@@ -35,4 +35,13 @@ def print_parameter_query(fields:str, where:str, parameter):
     print(tabulate(results,fields.split(",")))
     db.close()  
 
-print_query('alco_locos')
+choise = input('Welcome to the steam locomotive database\n\n'
+                'select what you want to chose\n'
+                'A: Age and built date\n' 
+                'B: Whyte and boiler\n'
+                '')
+
+if choise == 'A':
+    print_query('age_and_built_date')
+elif choise == 'B':
+    print_query('whyte_and_boiler')
