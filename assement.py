@@ -24,21 +24,10 @@ def print_query(view_name:str):
     db.close()
 
 
-def print_parameter_query(fields:str, where:str, parameter):
-    """ Prints the results for a parameter query in tabular form. 
-        Only required for Excellence """
-    db = sqlite3.connect(DB_NAME)
-    cursor = db.cursor()
-    sql = ("SELECT " + fields + " FROM " + " WHERE " + where)
-    cursor.execute(sql,(parameter,))
-    results = cursor.fetchall()
-    print(tabulate(results,fields.split(",")))
-    db.close()  
-
 
 """Code for the menu interface"""
 choice =''
-while choice != 'Z':
+while choice != 'z':
     choice = input('Welcome to the steam locomotive database\n\n'
                      'select what you want to chose\n'
                      'A: Age and built date\n' 
@@ -49,9 +38,8 @@ while choice != 'Z':
                      "F: Baldwin Locomotive Works Loco's\n" 
                      "G: Locomotives with boilers longer than 20 feet\n" 
                      "H: Locomotives built before 1920\n" 
-                     "Z: Exit the database \n"
-                     "Type here: ")
-    
+                     "Z: Exit the database \n\n Type here: ")
+    #outcomes for each button press
     choice = choice.lower()
     if choice == 'a':
         print_query('age_and_built_date')
@@ -69,5 +57,5 @@ while choice != 'Z':
         print_query('long_boiler')
     elif choice == 'h':
         print_query('old_locos')
-    elif choice == 'Z':
+    elif choice == 'z':
         exit
